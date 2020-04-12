@@ -15,6 +15,8 @@
 
 
 ![alt_txt](https://github.com/kaochikao/jkg_boundary/img/sparksqlthriftserver.png)
+![alt_txt](https://github.com/kaochikao/jkg_boundary/blob/master/img/sparksqlthriftserver.png)
+
 
 To start the JDBC/ODBC server, run the following in the Spark directory:
 ```
