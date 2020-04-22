@@ -1,8 +1,5 @@
 
 
-- what is Thrift?
-- what is Spark Thrift server for?
-
 # Apache Thrift
 - cross-language service framework
     - 用於micro-service architecture
@@ -43,6 +40,7 @@ service TimeServer{
 - Spark Thrift Server的目的也只是取代**HiveServer2**，因此它依旧可以和**Hive Metastore**进行交互，获取到hive的元数据。
 - Spark thrift server is pretty similar to hiveserver2 thrift, rather than submitting the sql queries as hive mr job it will use spark SQL engine which underline uses full spark capabilities. As an use case tools like Tableau can easily connect to spark thrift server through ODBC driver just like hiveserver2 and access the hive or spark temp tables to run the sql queries on spark framework.
 - Spark SQL can also act as a distributed query engine using its JDBC/ODBC or command-line interface. In this mode, end-users or applications can interact with Spark SQL directly to run SQL queries, without the need to write any code.
+- Spark Thrift Server说白了就是小小的改动了下HiveServer2，代码量也不多。虽然接口和HiveServer2完全一致，但是它以单个Application在集群运行的方式还是比较奇葩的。可能官方也是为了实现简单而没有再去做更多的优化。
 
 
 ![alt_txt](https://github.com/kaochikao/jkg_boundary/blob/master/img/sparksqlthriftserver.png)
@@ -70,3 +68,7 @@ Spark SQL CLI (Note that the Spark SQL CLI cannot talk to the Thrift JDBC server
 ```
 
 ![alt_txt](https://github.com/kaochikao/jkg_boundary/blob/master/img/spark_thrift_vs_hive.png)
+
+
+Reference:
+- https://blog.csdn.net/u013332124/article/details/90339850
