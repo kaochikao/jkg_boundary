@@ -1,5 +1,10 @@
 ### TODO
-
+Notes (TODO)
+- Hadoop IO
+- Avro
+- Google Protobuf
+- PandasUDF
+- JVM
 
 script:
 - pivot, cut the lineage w/ ._rdd
