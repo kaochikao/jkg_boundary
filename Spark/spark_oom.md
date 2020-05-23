@@ -34,3 +34,9 @@ Solution:
 --conf “spark.yarn.executor.memoryOverhead=2048”
 ```
 
+關於Off-heap memory:
+- Spark 1.6 开始引入了 Off-heap memory
+- 这种模式`不在 JVM 内申请内存`，而是调用 Java 的 unsafe 相关 API 进行诸如 C 语言里面的 malloc() 直接向操作系统申请内存
+- 好處：这种方式下 `Spark 可以直接操作系统堆外内存`，减少了不必要的内存开销，以及频繁的 `GC 扫描`和`回收`，提升了处理性能。另外，堆外内存可以被精确地申请和释放，而且序列化的数据占用的空间可以被精确计算，所以相比堆内内存来说降低了管理的难度，也降低了误差。
+- 壞處：缺点是必须自己编写内存申请和释放的逻辑。
+- config: 默认情况下Off-heap模式的内存并不启用，我们可以通过`spark.memory.offHeap.enabled`参数开启

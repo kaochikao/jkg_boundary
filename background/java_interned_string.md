@@ -1,0 +1,8 @@
+
+
+- Basically doing String.intern() on a series of strings will ensure that all strings having same contents `share same memory`. So if you have list of names where 'john' appears 1000 times, by interning you ensure `only one 'john' is actually allocated memory`.
+- This can be useful to `reduce memory requirements` of your program. But be aware that the cache is maintained by JVM in `permanent memory pool` which is usually limited in size compared to heap so you should not use intern if you don't have too many duplicate values.
+- On one hand, it is true that you can remove String duplicates by internalizing them. The problem is that the `internalized strings` go to the `Permanent Generation`, which is an area of the JVM that is `reserved for non-user objects`, like Classes, Methods and other internal JVM objects. 
+- The size of this area is `limited`, and is usually `much smaller than the heap`. Calling intern() on a String has the effect of `moving it out from the heap into the permanent generation`, and you risk running out of PermGen space.
+- In JDK 7, interned strings are `no longer allocated in the permanent generation` of the Java heap, but are instead allocated in the `main part of the Java heap` (known as the `young and old generations`), along with the other objects created by the application. 
+- This change will result in more data residing in the main Java heap, and less data in the permanent generation, and thus may require heap sizes to be adjusted. Most applications will see only relatively small differences in heap usage due to this change, but larger applications that load many classes or make heavy use of the String.intern() method will see more significant differences.
