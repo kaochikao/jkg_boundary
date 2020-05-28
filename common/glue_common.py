@@ -19,4 +19,17 @@ dyf = glueConext.create_dynamic_frame_from_options(
     }
 )
 
+# with recurse, 
+"""
+in S3:
+a/b1/c1/files.csv
+a/b1/c2/files.csv
+"""
+dyf = glueContext.create_dynamic_frame.from_options(
+    's3', 
+    connection_options={"paths": ["s3://a/"], 'recurse':True}, 
+    format='json', 
+    transformation_ctx = "tmp"
+)
+
 dyf.toDF().show()
