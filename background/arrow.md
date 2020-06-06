@@ -31,7 +31,7 @@ Storm
 
 
 ## Key Points:
-- Arrow also promotes zero-copy data sharing. As Arrow is adopted as the internal representation in each system, one system can hand data directly to the other system for consumption. And when these systems are located on the same node, the copy described above can also be avoided through the use of shared memory. This means that in many cases, moving data between two systems will have no overhead.
+- Arrow also promotes `zero-copy data sharing`. As Arrow is adopted as the internal representation in each system, one system can hand data directly to the other system for consumption. And when these systems are located on the same node, `the copy described above can also be avoided through the use of shared memory`. This means that in many cases, moving data between two systems will have no overhead.
 - features a **zero serialization/ deserialization design**, allowing low-cost data movement between nodes.
 - **standard in-memory representation** that every engine can use
 - makes sharing of data across platforms seamless and efficient.
@@ -84,3 +84,20 @@ pandas_df.describe()
 - https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae
 - Arrow + Spark + Tensorflow: https://databricks.com/session/accelerating-tensorflow-with-apache-arrow-on-spark-bonus-making-it-available-in-scala
 - https://www.dremio.com/apache-arrow-explained/
+
+
+# Wes McKinney - Apache Arrow: Leveling Up the Data Science Stack
+- https://www.youtube.com/watch?v=uZA55cGDaBQ
+
+
+- Arrow Project本身分為兩個部分：
+    1. Memory format / protocol `specification` ("the Arrow columanr format")
+        -> 定義"what is a table"
+    2. `Standard Libraries` for key programming languages
+- "ORC 算是Arrow的competitor"
+
+# Parquet & Arrow
+- https://www.youtube.com/watch?v=dPb2ZXnt2_U
+- Parquet: Common need for `on disk` columnar.
+- Arrow: Common need for `in memory` columnar.
+- Arrow is building on the success of Parquet.
